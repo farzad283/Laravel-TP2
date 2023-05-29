@@ -5,9 +5,70 @@ Github : https://github.com/farzad283/Laravel-TP1.git
 WebDev: 
 
 
+-----------------------------------------------------------------------------------------
+
+Description:
+
+Dans ce projet, la liste des coordonnées des étudiants et leur ville de résidence sont présentées dans deux tableaux et enfin leurs coordonnées sont affichées sur une nouvelle page.
+• La première page est la couverture du projet, vous pouvez accéder à la liste des étudiants en la parcourant ou en cliquant dessus.
+• Sur cette page, nous voyons la liste des étudiants et en cliquant sur chaque étudiant, nous passons à la page suivante et voyons ses détails et vous pouvez également créer un nouvel étudiant en cliquant sur le bouton "Ajouter".
+• Sur la page de détail de chaque étudiant, vous pouvez les modifier ou les supprimer avec cliquant sur les boutons modifier et effacer.
+
+
 ------------------------------------------------------------------------------------------
 
-TP-1
+La documentation: 
+
+
+1-	Créer un dossier nommé “Maisonneuve-2296191” :
+
+    Composer create-project  --prefer-dist Laravel/Laravel Maisonneuve-2296191 ‘“8.* “
+
+2-	Créer database nommé “ Etudiant_Maisonneuve“ dans phpMyAdmin.
+
+3-  Apporter des modifications au fichier .env:
+
+    o	Changer APP-NAME:” Etudiant_Maisonneuve”
+
+    o	Effacer et régénérer APP-KEY à l’URL :localhost :8080 avec cette command :  php artisan serve. => Generate APP KEY
+
+    o	Changer “ DB-PORT“  et “ DB_USERNAME“  et “ DB-DATABASE“  et “ DB-PASSWORD“ 
+        
+
+4-	Créer  les Modèles :
+
+    o	Php artisan make :model Etudiant -m
+
+    o	Php artisan make :model Ville -m
+
+
+5-	créer les tables :
+
+    o	php artisan make :factory EtudiantFactory
+
+    o	php artisan make :factory VilleFactory
+
+
+6-	Saisir 15 nouvelles villes et 100 nouveaux étudient
+
+    o	php artisan tinker
+        \App\Model\Ville ::factory()->times(15)->create();
+
+    o	php artisan tinker
+ 	\App\Model\Etudiant ::factory()->times(100)->create();
+
+
+7-	Créez le controleu
+
+    o	Php artisan make :controller EtudiantController -m Etudiant
+
+
+8-	Créez folder layouts et folder etudiant dans views
+
+
+------------------------------------------------------------------------------------------
+
+TP-1 - CRUD
 
 Créer un site web dynamique en utilisant le cadriciel Laravel
 Félicitations, vous avez reçu un nouveau mandat et vous souhaitez impliquer toutes les connaissances que vous avez acquises dans le cours Cadriciel Web.
