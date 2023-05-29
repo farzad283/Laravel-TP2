@@ -2,7 +2,7 @@ Nom: Mohammadreza Habibzadeh - 2296191
 
 Github : https://github.com/farzad283/Laravel-TP1.git
 
-WebDev: 
+WebDev: https://e2296191.webdev.cmaisonneuve.qc.ca/TP1-laravel
 
 
 -----------------------------------------------------------------------------------------
@@ -52,10 +52,10 @@ La documentation:
 6-	Saisir 15 nouvelles villes et 100 nouveaux étudient
 
     o	php artisan tinker
-        \App\Model\Ville ::factory()->times(15)->create();
+        \App\Models\Ville ::factory()->times(15)->create();
 
     o	php artisan tinker
- 	\App\Model\Etudiant ::factory()->times(100)->create();
+ 	\App\Models\Etudiant ::factory()->times(100)->create();
 
 
 7-	Créez le controleu
