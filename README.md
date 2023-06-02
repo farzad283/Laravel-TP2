@@ -41,6 +41,8 @@ La documentation:
 
     o	Php artisan make :model Ville -m
 
+    o	Php artisan migrat
+
 
 5-	créer les tables :
 
