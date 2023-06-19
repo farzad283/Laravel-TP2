@@ -15,15 +15,17 @@ class CreateEtudiantsTable extends Migration
     {
         Schema::create('etudiants', function (Blueprint $table) {
             $table->id();
-            $table->string('nom', 100);
+            $table->string('nom');
             $table->string('address');
             $table->string('phone');
-            $table->string('email');
             $table->date('date_de_naissance');
             $table->unsignedBigInteger('ville_id');
+            $table->foreign('ville_id')->references('id')->on('villes');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

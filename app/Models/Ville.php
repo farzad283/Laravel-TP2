@@ -15,4 +15,13 @@ class Ville extends Model
                     ->get();
         return $query;
     }
+    use HasFactory;
+    protected $fillable = [
+        'id',
+        'nom'
+    ];
+    public function etudiant()
+    {
+        return $this->hasMany('App\Models\Etudiant','ville_id', 'id');
+    }
 }

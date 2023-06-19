@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Ville;
 
 class VilleFactory extends Factory
 {
@@ -15,7 +14,7 @@ class VilleFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->city,
+            'nom'=>$this->faker->unique()->city,
         ];
     }
 }

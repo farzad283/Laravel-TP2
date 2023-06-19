@@ -9,19 +9,36 @@ class Etudiant extends Model
 {
     use HasFactory;
 
+    protected $table = 'Etudiants'; // Modify the table name to 'Etudiants'
+
     protected $fillable = [
+        'id',
         'nom',
         'address',
         'phone',
-        'email',
         'date_de_naissance',
-        'ville_id'
+        'ville_id',
+        'user_id'
     ];
 
     public function etudiantHasVille(){
-        return $this->hasOne('App\Models\Ville', 'id', 'ville_id');
+        return $this->hasOne(Ville::class, 'id', 'ville_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function article()
+    {
+        return $this->hasMany(Article::class, 'etudiant_id', 'id');
     }
 
 
+    public static function selectEtudiant()
+    {
+       
+        $etudiants = Etudiant::orderBy('nom')->get(['id', 'nom']);
+        return $etudiants;
+    }
 }
-

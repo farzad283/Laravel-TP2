@@ -1,0 +1,42 @@
+@extends('layouts.app')
+@section('title', ('lang.text_modifyStudent'))
+@section('titleHeader', trans('lang.text_modifyStudent'))
+@section('content')
+<hr>
+<br>
+<div class="row mt-4 justify-content-center">
+    <div class="col-6">
+        <div class="card">
+            <form method="post">
+                @csrf
+                @method('put')
+                <div class="card-header bg-info p-4 text-center ">
+                   <h4>@lang('lang.text_formule')</h4> 
+                </div>            
+
+                <div class="card-body">
+                    <label for="title">@lang('lang.text_name')</label>
+                    <input type="text" id="nom" name="nom" class="form-control" value="{{ auth()->user()->name }}" >
+
+                    <label for="titre_en">@lang('lang.text_titreEn')</label>
+                    <input type="text" id="titre_en" name="titre_en" class="form-control" value="{{ $article->titre_en }}">
+
+                    <label for="titre_fr">@lang('lang.text_titreFr')</label>
+                    <input type="text" id="titre_fr" name="titre_fr" class="form-control" value="{{ $article->titre_fr }}">
+
+
+                    <label for="contenu_en">@lang('lang.text_contenuFr')</label>
+                    <textarea name="contenu_en" id="contenu_en" class="form-control">{{ $article->contenu_en }}</textarea>
+
+                    <label for="contenu_fr">@lang('lang.text_contenuEn')</label>
+                    <textarea name="contenu_fr" id="contenu_fr" class="form-control">{{ $article->contenu_fr }}</textarea>
+                    
+                </div>
+                <div class="card-footer text-center">
+                    <input type="submit" class="btn btn-success" value="@lang('lang.text_save')">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

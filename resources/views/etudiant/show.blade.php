@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Etudiant')
-@section('titleHeader', 'Etudiant')
+@section('title', trans('lang.text_eachstudent'))
+@section('titleHeader', trans('lang.text_eachstudent'))
 @section('content')
 <hr>
 <div class="row mt-5">
     <div class="col-12">
-        <a href="{{route('list.index')}}" class="btn btn-outline-primary btn-sm">Retourner</a>
+        <a href="{{route('list.index')}}" class="btn btn-outline-primary btn-sm">@lang('lang.text_areturn')</a>
         <br>
         <br>
         <hr>
@@ -18,19 +18,18 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li class="mb-2"><strong class="text-primary">Address : </strong>{{$etudiant->address}}</li>
-                            <li class="mb-2"><strong class="text-primary" >Courriel : </strong>{{$etudiant->email}}</li>
-                            <li class="mb-2"><strong class="text-primary">Téléphone : </strong>{{$etudiant->phone}}</li>
-                            <li class="mb-2"><strong class="text-primary">Date de naissance : </strong>{{$etudiant->date_de_naissance}}</li>
-                            <li class="mb-2"><strong class="text-primary">Ville : </strong> {{$etudiant->etudiantHasVille->nom}}</li>
+                            <li class="mb-2"><strong class="text-primary">@lang('lang.text_address') : </strong>{{$etudiant->address}}</li>
+                            <li class="mb-2"><strong class="text-primary">@lang('lang.text_phone') : </strong>{{$etudiant->phone}}</li>
+                            <li class="mb-2"><strong class="text-primary">@lang('lang.text_date') : </strong>{{$etudiant->date_de_naissance}}</li>
+                            <li class="mb-2"><strong class="text-primary">@lang('lang.text_ville') : </strong> {{$etudiant->etudiantHasVille->nom}}</li>
                         </ul>
                         <div class="row">
                             <div class="col-6">
-                                <a href="{{ route('etudiant.edit', $etudiant->id)}}" class="btn btn-success">Modifier</a>
+                                <a href="{{ route('etudiant.edit', $etudiant->id)}}" class="btn btn-success">@lang('lang.text_modify')</a>
                             </div>
                             <div class="col-6">
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete">
-                                    Effacer
+                                @lang('lang.text_delete')
                                 </button>
                             </div>
                         </div>
@@ -47,18 +46,18 @@
   <div class="modal-dialog ">
     <div class="modal-content ">
       <div class="modal-header bg-info">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Effacer Verification</h1>
+        <h1 class="modal-title fs-5 " id="exampleModalLabel">@lang('lang.text_deleteveirfy')</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Voulez-vous vraiment effacer la donnée d'étudiant:<strong> {{ $etudiant->nom}} ?</strong>
+        @lang('lang.text_veirfy'):<strong> {{ $etudiant->nom}} ?</strong>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('lang.text_close')</button>
         <form method="post">
                     @csrf
                     @method('delete')
-                    <input type="submit" value="Effacer" class="btn btn-danger">
+                    <input type="submit" value="@lang('lang.text_delete')" class="btn btn-danger">
         </form>
       </div>
     </div>
