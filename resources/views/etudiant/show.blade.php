@@ -23,6 +23,7 @@
                             <li class="mb-2"><strong class="text-primary">@lang('lang.text_date') : </strong>{{$etudiant->date_de_naissance}}</li>
                             <li class="mb-2"><strong class="text-primary">@lang('lang.text_ville') : </strong> {{$etudiant->etudiantHasVille->nom}}</li>
                         </ul>
+                        @if (Auth::check() && Auth::user()->id == $etudiant->user_id)
                         <div class="row">
                             <div class="col-6">
                                 <a href="{{ route('etudiant.edit', $etudiant->id)}}" class="btn btn-success">@lang('lang.text_modify')</a>
@@ -33,6 +34,7 @@
                                 </button>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

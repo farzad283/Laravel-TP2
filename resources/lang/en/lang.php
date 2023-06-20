@@ -7,6 +7,7 @@ return [
     'text_date' => 'Date of birthday',
     'text_address' => 'Address',
     'text_ville'=> 'Cities',
+    
 
 
 //success message
@@ -45,7 +46,7 @@ return [
     'text_save'=>'Save',
     'text_formule'=>'Form',
     'text_deleteveirfy' =>'Delete Verification',
-    'text_veirfy'=>"Are you sure you want to delete student data",
+    'text_veirfy'=>"Are you sure you want to delete data",
     'text_close'=> 'Close',
     'text_ajouter'=> 'Add',
     'text_ajouterArticle'=>'Add article',
@@ -67,7 +68,23 @@ return [
 
     //auth.new-password
     'text_new_password'=> 'New password',
-    'text_confirm_password'=> 'Confirm Password'
+    'text_confirm_password'=> 'Confirm Password',
+
+    //directory
+    'text_titlePageDir'=>'Directory List',
+    'text_download'=> 'You can download any document by clicking on it.',
+    'text_dirExplain'=> 'You can add a new document',
+    'text_ajouterDoc'=> 'Add Directory',
+    'text_file'=> 'File download',
+    'text_show'=> 'Show file',
+    'text_md' => 'Modify/Delete',
+    'text_modifyDir'=>'Edit a directory',
+    'text_fileC'=> 'Current file',
+    'text_directory'=> 'Directory',
+
+    //welcome
+    'text_afficher'=> 'View Students',
+    'text_afficher2'=> 'Visit the list of students at this Maisonneuve college',
 
 
 ];

@@ -1,18 +1,17 @@
 Nom: Mohammadreza Habibzadeh - 2296191
 
-Github : https://github.com/farzad283/Laravel-TP1.git
+Github : https://github.com/farzad283/Laravel-TP2.git
 
-WebDev: https://e2296191.webdev.cmaisonneuve.qc.ca/TP1-laravel
 
 
 -----------------------------------------------------------------------------------------
 
 Description:
 
-Dans ce projet, la liste des coordonnées des étudiants et leur ville de résidence sont présentées dans deux tableaux et enfin leurs coordonnées sont affichées sur une nouvelle page.
-• La première page est la couverture du projet, vous pouvez accéder à la liste des étudiants en la parcourant ou en cliquant dessus.
-• Sur cette page, nous voyons la liste des étudiants et en cliquant sur chaque étudiant, nous passons à la page suivante et voyons ses détails et vous pouvez également créer un nouvel étudiant en cliquant sur le bouton "Ajouter".
-• Sur la page de détail de chaque étudiant, vous pouvez les modifier ou les supprimer avec cliquant sur les boutons modifier et effacer.
+Dans ce projet, la liste des informations des étudiants est fournie et enfin leurs détails sont affichés sur une nouvelle page.
+Tout utilisateur peut s'inscrire en tant qu'utilisateur sue le site. Chaque utilisateur peut voir la liste des étudiants et des utilisateur et uniquement supprimer ou modifier son information.
+Tout utilsateur peut s'ajouter en tant qu'étudiant. Dans ce cas, il peut ajouter un article et modifier ou supprimer son article. Il peut également télécharger.,modifier ou supprimer ses document.
+Tout les information être affichées en anglais et en français.
 
 
 ------------------------------------------------------------------------------------------
@@ -22,86 +21,134 @@ La documentation:
 
 1-	Créer un dossier nommé “Maisonneuve-2296191” :
 
-    Composer create-project  --prefer-dist Laravel/Laravel Maisonneuve-2296191 ‘“8.* “
+Composer create-project  --prefer-dist Laravel/Laravel Maisonneuve-2296191 ‘“8.* “
 
 2-	Créer database nommé “ Etudiant_Maisonneuve“ dans phpMyAdmin.
 
+
+
 3-  Apporter des modifications au fichier .env:
 
-    o	Changer APP-NAME:” Etudiant_Maisonneuve”
+o	Changer APP-NAME:” Etudiant_Maisonneuve”
 
-    o	Effacer et régénérer APP-KEY à l’URL :localhost :8080 avec cette command :  php artisan serve. => Generate APP KEY
+o	Effacer et régénérer APP-KEY à l’URL :localhost :8080 avec cette command :  php artisan serve. => Generate APP KEY
 
-    o	Changer “ DB-PORT“  et “ DB_USERNAME“  et “ DB-DATABASE“  et “ DB-PASSWORD“ 
-        
+o	Changer “ DB-PORT“  et “ DB_USERNAME“  et “ DB-DATABASE“  et “ DB-PASSWORD“ 
 
-4-	Créer  les Modèles :
+4-	Créer  les fichiel lang_fr :
 
-    o	Php artisan make :model Etudiant -m
-
-    o	Php artisan make :model Ville -m
-
-    o	Php artisan migrat
+o	Créer un fichier ‘’lang.php’’ dans dossier nomé ‘’ fr ‘’ das dossier lang, dans dossier resources
 
 
-5-	créer les tables :
+5-	Créer  les Modèles :
 
-    o	php artisan make :factory EtudiantFactory
+o	Php artisan make :model Etudiant -m
 
-    o	php artisan make :factory VilleFactory
+o	Php artisan make :model Ville -m
+
+o	Php artisan make :model Article -m
+
+o	Php artisan make :model Directory -m
+
+o	Php artisan migrate
+
+6-	créer les factory :
+
+o	php artisan make :factory EtudiantFactory
+
+o	Php artisan make :factory VilleFactory
+
+o	Php artisan make :factory ArticleFactory
+
+o	php artisan make :factory DirectoryFactory
+
+o	php artisan make :factory UserFactory
+
+7-	Saisir 10 nouvelles villes , étudient, user, article, directory
+
+o	php artisan tinker
+
+ 	\App\Model\Ville ::factory()->times(10)->create();
+		\App\Model\Etudiant ::factory()->times(10)->create();
+\App\Model\User ::factory()->times(10)->create();
+\App\Model\Article::factory()->times(10)->create();
+\App\Model\Directory ::factory()->times(10)->create();
+
+8-	Créez le controller
+
+o	Php artisan make :controller EtudiantController -m Etudiant
+o	Php artisan make :controller CustomAuthController -m Auth
+o	Php artisan make :controller ArticleController -m Article
+o	Php artisan make :controller DirectoryController -m Directory
+o	Php artisan make :controller LocalizationController 
 
 
-6-	Saisir 15 nouvelles villes et 100 nouveaux étudient
+9-	Créez le middleware
 
-    o	php artisan tinker
-        \App\Models\Ville ::factory()->times(15)->create();
-
-    o	php artisan tinker
- 	\App\Models\Etudiant ::factory()->times(100)->create();
+o	Php artisan make:middleware localization
+    
+- Ajouter ‘’ \App\Http\Middleware\Localization::class,’’  dans kernel.php
 
 
-7-	Créez le controleu
+10-	Créez folder layouts et folder etudiant , auth, article et directory dans views
 
-    o	Php artisan make :controller EtudiantController -m Etudiant
+11-	Ajouter Paginate
+
+Providers   =>  AppServiceProvide :  ajouter : 
+‘’use Illuminate\Pagination\Paginator;’’
+“public function boot()
+    {
+        Schema::defaultStringLength(191);
+        Paginator::useBootstrap();
+    }”
 
 
-8-	Créez folder layouts et folder etudiant dans views
+12-	PDF
+
+Composer require barryvdh/laravel-dompdf
+
+o	Ajouter dans dossier config dans fichier app.php :
+ 				'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
-------------------------------------------------------------------------------------------
+13-	Créer link storage pour sauvegarde document
 
-TP-1 - CRUD
+o	Php artisan storage :link
 
-Créer un site web dynamique en utilisant le cadriciel Laravel
-Félicitations, vous avez reçu un nouveau mandat et vous souhaitez impliquer toutes les connaissances que vous avez acquises dans le cours Cadriciel Web.
-Le mandat est de créer un site Internet pour recueillir de l'information auprès des étudiants du Collège Maisonneuve, et possiblement à l'avenir, de construire un réseau social pour eux.
-La première étape consiste à rassembler les informations, remplir la base de données avec des données aléatoires et créer les interfaces fonctionnelles pour visualiser, saisir, mettre à jour et supprimer les étudiants
 
-Votre base de données initiale aura 2 tables : Étudient (id, nom, adresse, phone, email, date de naissance, ville_id) et ville (id, nom).
 
-1. En utilisant les lignes de commande, créer un nouveau projet Laravel nommée Maisonneuve{votre matricule} (1 pt)
-2. En utilisant les lignes de commande, créer les modèles (1 pts)
-3. En utilisant les lignes de commande, créer les tables (2 pts)
-4. En utilisant les lignes de commande, saisir 15 nouvelles villes (1 pts)
-5. En utilisant les lignes de commande, saisir 100 nouveaux étudient (1 pts)
-Pour les questions 4 et 5, effectuez une recherche des propriétés de "Factory" pour remplir des valeurs telles que des noms, des adresses, des téléphones, etc. (pas de phrases ou de texte aléatoires).
-6. En utilisant les lignes de commande, créer les contrôleurs (1 pts)
-7. Créez votre layout.blade avec vous CSS, vous devez importer bootstrap (ou du CSS personnalise) et le concevoir selon vos préférences. (1 pts)
-8. Travailler avec bootstrap (ou du CSS personnalise) pour respecter les concepts d'ergonomie, soyez créatif (1pts).
-9. Créer un contrôleur “index” et une vue, pour afficher tous les étudiants, avec un lien pour sélectionner l'étudiant et le mettre à jour. (2 pts)
-10. Créer un contrôleur “create” et une vue, pour saisir un nouvel étudiant. Le formulaire doit avoir un champ “select” avec toutes les villes qui viennent de la base de données. (2 pts)
-11. Créer un contrôleur “show” et une vue, pour afficher un étudiant sélectionné. (2 pts)
-12. Créer un contrôleur “edit” et une vue, pour afficher un étudiant sélectionné dans un formulaire et le mettre à jour. (2 pts)
-13. Créer un contrôleur “destroy” pour supprimer un étudiant  électionné. (1 pt)
-14. Publier votre projet dans GitHub (publique) et envoyer le lien dans la documentation. (1 pts)
-15. Enregistrez le projet avec une extension ZIP et ajouter la documentation dans la racine (1pt)
 
+
+----------------------------------------------------------------------------------------
+
+TP-2 - LARAVEL
+
+À partir de votre TP 1 vous devez apporter les améliorations demandées à votre projet.
+Félicitations, votre client a apprécié votre premier projet et aimerait vous offrir un deuxième mandat pour améliorer le réseau social du collège. Vous souhaitez impliquer toutes les nouvelles connaissances acquises dans le cours Cadriciel Web pour la poursuite de ce projet.
+● Le client souhaite maintenant ajouter une page de connexion pour que chaque élève puisse se connecter à son propre compte, la table étudiante doit donc être connectée à la table utilisateur (users). Pour maintenir la sécurité du système, le mot de passe doit être crypté (2 pts)
+● Étant donné que les étudiants du collégial sont polyglottes, le client vous a demandé de créer un système multilingue, français en anglais. Tout le contenu du système doit être dans les deux langues (2 points)
+Pour compléter le système et le mettre en production, le client a demandé 2 autres modifications majeures.
+
+Le Forum
+● Le système doit avoir un forum dans lequel les étudiants peuvent écrire des articles. Les articles doivent être visibles par tous les étudiants connectés. Seul l'étudiant qui a écrit l'article peut le modifier et/ou le supprimer. (2 pts)
+● Pour créer le forum il faut ajouter un tableau dans la base de données, il est important d'enregistrer le titre de l'article, le contenu et la date, les articles peuvent être rédigés en français et en anglais, et le système doit gérer la langue de choix lors de la publication. (2 pts)
+
+Le répertoire de documents
+
+Pour compléter, le système doit disposer d'un répertoire de fichiers, dans lequel les étudiants peuvent partager des documents au format pdf, zip et doc. Ce répertoire doit être accessible par tous les étudiants connectés. Seul l'élève qui a partagé le document peut le modifier et/ou le supprimer. (2 pts)
+● Pour créer le répertoire, vous devez ajouter un tableau dans la base de données, il est important d'enregistrer le titre du document et la date, les titres peuvent être rédigés en français et en anglais, et le système doit gérer la langue de choix lors de la publication. (2pts)
+● Le répertoire des fichiers doit être affiché dans un tableau avec la technique de pagination, le titre et le nom de l'utilisateur qui a partagé le fichier doivent être  visibles sous ce tableau. (2 pt)
+● Le système doit avoir une interface sécurisée, conviviale avec du CSS, Bootstrap et un menu de navigation. (3pts)
+● Tous les formulaires doivent être validés, y compris les formulaires développés dans le TP1 (2pts)
+
+Publier votre projet dans GitHub (publique) et envoyer le lien dans la
+documentation. (1 pts)
+Déposez le fichier ZIP, sur Léa - Onmivox.
 Vous devez m'envoyer sur Mio :
-● La documentation avec les lignes de commandes utilisées pendant le projet :
-Créer le projet, les modèles, les contrôleurs, les tables, les données, etc.
-● Le lien pour accéder à votre site sur webdev et/ou server et GitHub
-● Un fichier compressé avec l'ensemble de votre projet Laravel.
-● Si vous avez toujours des problèmes pour publier le projet dans webdev. Vous devez faire une vidéo enregistrant l’écran pour montrer que les opérations CRUD marchent bien dans votre projet, (1 - 2 min video)
+● Enregistrez le projet avec une extension ZIP et ajoutez la documentation (lisez-moi) à la racine du projet et la déposer dans omnivox. Ajoutez dans la documentation le lien pour y accéder le projet sur WebDev ou un autre serveur public, aussi comme le nom d’utilisateur et le mot de passe d’un étudiant enregistré dans le système. Ajouter dans le document le lien GitHub.
+
+L'absence de ces informations dans la documentation sera considérée comme un projet non conclu avec une note finale diminuée de 5 points sur 25.
+● Si vous avez toujours des problèmes pour publier le projet dans webdev. Vous devez faire une vidéo enregistrant l’écran pour montrer que les opérations CRUD marchent bien dans votre projet, (1 - 2 min video).
 
 
 -------------------------------------------------------------------------------------------

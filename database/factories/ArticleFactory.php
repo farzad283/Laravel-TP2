@@ -25,7 +25,7 @@ class ArticleFactory extends Factory
         $title = $this->faker->words(5, true);
         
         // Get a random etudiant_id from existing etudiants
-        $etudiantId = Etudiant::pluck('id')->random();
+        $Id = Etudiant::pluck('id')->random();
 
         return [
             'titre_fr' => ucfirst($title),
@@ -33,7 +33,7 @@ class ArticleFactory extends Factory
             'contenu_fr' => $this->faker->paragraph(25),
             'contenu_en' => $this->faker->paragraph(25),
             'date_de_creation' => $this->faker->date,
-            'etudiant_id' => $etudiantId,
+            'etudiant_id' => $Id,
         ];
     }
 }

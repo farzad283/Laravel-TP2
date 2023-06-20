@@ -2,14 +2,14 @@
 @section('title', 'Login')
 @section('titleHeader', trans('lang.text_login'))
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-6">
-            <div class="card">
-                <!-- @lang('lang.text_login')
-                {{ trans('lang.text_login')}} -->
-            <form action="{{route('login.authentication')}}" method="post">
-                @csrf
-                <div class="card-body">
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card">
+            <!-- @lang('lang.text_login')
+            {{ trans('lang.text_login')}} -->
+        <form action="{{route('login.authentication')}}" method="post">
+            @csrf
+            <div class="card-body">
                 <input type="email" class="form-control mt-3" name="email" placeholder="@lang('lang.text_email')" value="{{old('email')}}">
                 @if($errors->has('email'))
                     <div class="text-danger mt-2">
@@ -21,14 +21,13 @@
                     <div class="text-danger mt-2">
                         {{$errors->first('password')}}
                     </div>     
-                @endif
-            
-                </div>
-                <div class="card-footer d-grid mx-auto">
-                    <input type="submit" value="@lang('lang.text_login')" class="btn btn-dark btn-block">
-                </div>
-            </form>
+                @endif        
             </div>
+            <div class="card-footer d-grid mx-auto">
+                <input type="submit" value="@lang('lang.text_login')" class="btn btn-dark btn-block">
+            </div>
+        </form>
         </div>
     </div>
+</div>
 @endsection

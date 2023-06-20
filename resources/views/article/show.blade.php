@@ -29,16 +29,19 @@
                             <li class="mb-2"><strong class="text-primary">@lang('lang.text_dateCreation') : </strong>{{$article->date_de_creation}}</li>
                         </ul>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-4">
                             @if (Auth::check() && Auth::user()->etudiant->id == $article->etudiant_id)
-                                <a href="{{ route('article.edit', $article->id)}}" class="btn btn-success">@lang('lang.text_modify')</a>
-                            
+                                <a href="{{ route('article.edit', $article->id)}}" class="btn btn-success">@lang('lang.text_modify')</a> 
                             </div>
-                            <div class="col-6">
+                          
+                            <div class="col-4">
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete">
                                 @lang('lang.text_delete')
                                 </button>
                             @endif
+                            </div>
+                            <div class="col-4">
+                              <a href="{{ route('article.showPdf', $article->id)}}" class="btn btn-warning" target="_blank">PDF</a>
                             </div>
                         </div>
                     </div>
@@ -54,18 +57,18 @@
   <div class="modal-dialog ">
     <div class="modal-content ">
       <div class="modal-header bg-info">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Effacer Verification</h1>
+        <h1 class="modal-title fs-5 " id="exampleModalLabel">@lang('lang.text_deleteveirfy')</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Voulez-vous vraiment effacer la donnée d'article:<strong> {{ $article->nom}} ?</strong>
+      @lang('lang.text_veirfy'):<strong> {{ $article->nom}} ?</strong>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('lang.text_close')</button>
         <form method="post">
                     @csrf
                     @method('delete')
-                    <input type="submit" value="Effacer" class="btn btn-danger">
+                    <input type="submit" value="@lang('lang.text_delete')" class="btn btn-danger">
         </form>
       </div>
     </div>

@@ -49,7 +49,7 @@ class EtudiantController extends Controller
     $user = Auth::user(); // Retrieve the currently authenticated user
     $request->validate([
         'nom' => 'required',
-        'adresse' => 'required',
+        'address' => 'required',
         'phone' => 'required|regex:/^\d{10}$/',
         'date_de_naissance' => 'required|date_format:Y-m-d',
         'ville_id' => 'required|exists:villes,id',

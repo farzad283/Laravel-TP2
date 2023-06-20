@@ -19,7 +19,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header text-center">
-                <h4>@lang('lang.text_article')</h4>
+                <h4>@lang('lang.text_ajouterArticle')</h4>
             </div>
             <div class="card-body">
                 <div class="row mb-3">

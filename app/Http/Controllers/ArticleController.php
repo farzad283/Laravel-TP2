@@ -55,7 +55,6 @@ class ArticleController extends Controller
             'titre_en' => 'required|min:2|max:50',
             'contenu_fr' => 'required',
             'contenu_en' => 'required',
-            'date_de_creation' => 'required|date_format:Y-m-d',
         ]);
 
 

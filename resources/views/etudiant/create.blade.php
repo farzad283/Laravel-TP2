@@ -23,7 +23,7 @@
                     <label for="date_de_naissance">@lang('lang.text_date')</label>
                     <input type="date" id="date_de_naissance" name="date_de_naissance" class="form-control">
 
-                    <label for="article">@lang('lang.text_address')</label>
+                    <label for="address">@lang('lang.text_address')</label>
                     <textarea name="address" id="address" class="form-control"></textarea>
                     
                     <label for="nom">@lang('lang.text_ville')</label>

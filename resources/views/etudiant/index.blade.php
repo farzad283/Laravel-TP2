@@ -9,14 +9,14 @@
     <div class="col-8"><a class=" btn btn-primary btn-sm mr-3" href="{{route('article.index')}}">@lang('lang.text_article')</a></div>
     @endif
   
-    <div class="col-4 d-flex justify-content-center gap-2">
+    <div class="col-12 d-flex justify-content-center gap-2">
     @if (Auth::check() && Auth::user()->etudiant)
-    <p class="">@lang('lang.text_articleExplain')</p>
-        <a href="{{ route('article.create') }}" class="btn btn-primary btn-sm mt-3" style="position: relative; top: -20px;">@lang('lang.text_ajouterArticle')</a>
+        <p style="position: relative; top: -25px;">@lang('lang.text_articleExplain')</p>
+        <a href="{{ route('article.create') }}" class="btn btn-primary btn-sm mt-3" style="position: relative; top: -45px;">@lang('lang.text_ajouterArticle')</a>
         
-       @else
+    @else
         <p class="">@lang('lang.text_studientExplain')</p>
-        <a href="{{ route('etudiant.create', ['user' => $user[0]->id]) }}" class="btn btn-primary btn-sm mt-3" style="position: relative; top: -20px;">@lang('lang.text_ajouter')</a>
+        <a href="{{ route('etudiant.create', ['user' => $user[0]->id]) }}" class="btn btn-primary btn-sm mt-3 " style="position: relative; top: -20px;">@lang('lang.text_ajouter')</a>
     @endif
 
     </div>
@@ -29,9 +29,9 @@
                 <h4>@lang('lang.text_student')</h4>
             </div>
             <div class="card-body">
-            <div class="col-8">
-        <p>@lang('lang.text_explain') :</p>
-    </div>
+                <div class="col-8">
+                    <p>@lang('lang.text_explain') :</p>
+                </div>
                 <div class="row mb-3">
                     @forelse($lists as $list)
                         <div class="col-md-4 themed-grid-col mb-1 pl-3">

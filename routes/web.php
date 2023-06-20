@@ -5,6 +5,7 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DirectoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Etudiant
+
 Route::get('List', [EtudiantController::class, 'index'])->name('list.index');
 Route::get('etudiant/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show');
 
@@ -34,7 +38,7 @@ Route::put('etudiant-edit/{etudiant}', [EtudiantController::class, 'update']);
 
 Route::delete('etudiant/{etudiant}', [EtudiantController::class, 'destroy']);
 
-
+//Registration
 
 Route::get('registration', [CustomAuthController::class, 'create'])->name('registration');
 Route::post('registration', [CustomAuthController::class, 'store']);
@@ -63,3 +67,16 @@ Route::delete('article/{article}', [ArticleController::class, 'destroy']);
 
 
 Route::get('article-pdf/{article}', [ArticleController::class, 'showPdf'])->name('article.showPdf');
+
+
+// Directory
+
+Route::get('/directory', [DirectoryController::class, 'index'])->name('directory.index');
+
+Route::get('/directory-create', [DirectoryController::class, 'create'])->name('directory.create');
+Route::post('/directory-create', [DirectoryController::class, 'store'])->name('directory.store');
+
+Route::get('directory-edit/{directory}', [DirectoryController::class, 'edit'])->name('directory.edit');
+Route::put('directory-edit/{directory}', [DirectoryController::class, 'update']);
+
+Route::delete('directory/{directory}', [DirectoryController::class, 'destroy'])->name('directory.destroy');

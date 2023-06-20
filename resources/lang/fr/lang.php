@@ -44,7 +44,7 @@ return[
     'text_save'=>'Sauvegarder',
     'text_formule'=>'Formulaire',
     'text_deleteveirfy' =>'Effacer Verification',
-    'text_veirfy'=>"Voulez-vous vraiment effacer la donnée d'étudiant",
+    'text_veirfy'=>"Voulez-vous vraiment effacer la donnée",
     'text_close'=> 'Fermer',
     'text_ajouter'=> 'Ajouter',
     'text_ajouterArticle'=>'Ajouter article',
@@ -60,5 +60,21 @@ return[
 
     //auth.forgot
     'text_forgot_password'=> 'Mot de passe oublié',
-    'text_send'=> 'Envoyer'
+    'text_send'=> 'Envoyer',
+
+    //directory
+    'text_titlePageDir'=>'Liste du répertoire',
+    'text_download'=> "Vous pouvez télécharger n'importe quel document en cliquant dessus.",
+    'text_dirExplain'=> 'Vous pouvez ajouter un nouveau document',
+    'text_ajouterDoc'=> 'Ajouter répertoire',
+    'text_file'=> 'Téléchargement de fichier',
+    'text_show'=> 'Afficher le fichier',
+    'text_md' => 'Modifier/Supprimer',
+    'text_modifyDir'=>'Modifier un répertoire',
+    'text_fileC'=> 'Fichier actuel',
+    'text_directory'=> 'Répertoire',
+
+    //welcome
+    'text_afficher'=> 'Afficher les étudiants',
+    'text_afficher2'=> 'Visiter la liste des étudiants de ce collège Maisonneuve',
 ];
