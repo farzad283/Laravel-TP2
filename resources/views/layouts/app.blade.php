@@ -41,6 +41,9 @@
                         @endguest
                             <a class="nav-link @if($lang == 'fr') text-info @endif" href="{{route('lang','fr')}}">Français <i class='flag flag-france'></i></a>
                             <a class="nav-link @if($lang == 'en') text-info @endif" href="{{route('lang','en')}}">English <i class="flag flag-united-states"></i></a>
+                            <a class="nav-link badge bg-danger text-light" href="https://github.com/farzad283/Laravel-TP2.git" target="_blank" style="padding: 5px 20px; margin-left: 40px; line-height: 30px; font-size: 14px;">Github</a>
+
+
                     </div>
                 </div>
             </div>

@@ -108,7 +108,7 @@ class DirectoryController extends Controller
         Storage::disk('public')->delete($directory->file);
 
         // store the new file
-        $filePath = $request->file('file')->store('documents', 'public');
+        $filePath = $request->file('file')->store('public/documents');
 
         // update the file path in the directory
         $directory->file = $filePath;
