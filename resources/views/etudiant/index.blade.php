@@ -14,7 +14,7 @@
         <p style="position: relative; top: -25px;">@lang('lang.text_articleExplain')</p>
         <a href="{{ route('article.create') }}" class="btn btn-primary btn-sm mt-3" style="position: relative; top: -45px;">@lang('lang.text_ajouterArticle')</a>
         
-    @else
+    @elseif (!Auth::guest())
         <p class="">@lang('lang.text_studientExplain')</p>
         <a href="{{ route('etudiant.create', ['user' => $user[0]->id]) }}" class="btn btn-primary btn-sm mt-3 " style="position: relative; top: -20px;">@lang('lang.text_ajouter')</a>
     @endif
@@ -29,9 +29,7 @@
                 <h4>@lang('lang.text_student')</h4>
             </div>
             <div class="card-body">
-                <div class="col-8">
-                    <p>@lang('lang.text_explain') :</p>
-                </div>
+            </div>
                 <div class="row mb-3">
                     @forelse($lists as $list)
                         <div class="col-md-4 themed-grid-col mb-1 pl-3">

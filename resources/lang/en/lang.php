@@ -81,6 +81,8 @@ return [
     'text_modifyDir'=>'Edit a directory',
     'text_fileC'=> 'Current file',
     'text_directory'=> 'Directory',
+    'text_Open'=> 'Open Document',
+    'text_upload'=>'Download Document',
 
     //welcome
     'text_afficher'=> 'View Students',

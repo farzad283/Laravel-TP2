@@ -42,16 +42,16 @@
                     <td>{{ $directory->date }}</td>
                     <td>{{ $directory->etudiant->nom }}</td>
 
-                    <td><a href="{{ asset('storage/documents/' . str_replace('public/documents/', '', $directory->file)) }}" target="_blank">Download Document</a></td>
+                    <td><a href="{{ asset('storage/documents/' . str_replace('public/documents/', '', $directory->file)) }}" target="_blank">@lang('lang.text_upload')</a></td>
 
                     <!-- <td><embed src="{{ asset('storage/documents/' . str_replace('public/documents/', '', $directory->file)) }}" width="600" height="500" type="application/pdf">
                     </td> -->
 
-                    <td><a href="{{ asset('storage/documents/' . str_replace('public/documents/', '', $directory->file)) }}" target="_blank">Open Document</a>
+                    <td><a href="{{ asset('storage/documents/' . str_replace('public/documents/', '', $directory->file)) }}" target="_blank">@lang('lang.text_Open')</a>
                     </td>
                     <td>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-5 ">
                                 @if (Auth::check() && Auth::user()->etudiant->id == $directory->etudiant_id)
                                     <a href="{{ route('directory.edit', $directory->id)}}" class="btn btn-success">@lang('lang.text_modify')</a> 
                             </div>                            

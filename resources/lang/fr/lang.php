@@ -73,6 +73,8 @@ return[
     'text_modifyDir'=>'Modifier un répertoire',
     'text_fileC'=> 'Fichier actuel',
     'text_directory'=> 'Répertoire',
+    'text_Open'=> 'Ouvrir le document',
+    'text_upload'=>'Télécharger le document',
 
     //welcome
     'text_afficher'=> 'Afficher les étudiants',
